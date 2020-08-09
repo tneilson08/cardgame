@@ -18,7 +18,7 @@ function shuffleArray(array) {
 shuffleArray(deck);
 
 // Draw cards
-document.querySelector('.btn-draw').addEventListener('click', function(){
+function drawCard() {
   if(gamePlaying) {
     // 1. Draw from the deck and remove with shift()
     var card = deck.shift();
@@ -50,7 +50,7 @@ document.querySelector('.btn-draw').addEventListener('click', function(){
     }
 
     // 4. Update the round score IF the card drawn was NOT a 4 or a 9
-    if (card !== 2) {
+    if (card !== 2 && card !== 5 && card !== 9) {
       // add score
       roundScore += card;
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
@@ -59,15 +59,15 @@ document.querySelector('.btn-draw').addEventListener('click', function(){
       nextPlayer();
     }
 
-    if (card === 5) {
-      // add score
-      nextPlayer();
-    }
-
-    if (card === 9) {
-      // add score
-      nextPlayer();
-    }
+    // if (card === 5) {
+    //   // add score
+    //   setTimeout(nextPlayer, 2000);
+    // }
+    //
+    // if (card === 9) {
+    //   // add score
+    //   setTimeout(nextPlayer, 2000);
+    // }
 
     // 5. If deck array runs out, replace all cards in deck ///MAYBE CHANGE THIS SO GAME ENDS AND PLAYER WITH HIGHEST DECK WINS
     if (deck.length === 0) {
@@ -76,9 +76,14 @@ document.querySelector('.btn-draw').addEventListener('click', function(){
       shuffleArray(deck);
     }
   }
+}
+
+document.querySelector('.btn-draw').addEventListener('click', function(){
+  drawCard();
 });
 
-document.querySelector('.btn-endturn').addEventListener('click', function() {
+
+function endTurn() {
   if (gamePlaying) {
     // Add CURRENT score to GLOBAL score
     scores[activePlayer] += roundScore;
@@ -97,7 +102,13 @@ document.querySelector('.btn-endturn').addEventListener('click', function() {
       nextPlayer();
     }
   }
+}
+
+
+document.querySelector('.btn-endturn').addEventListener('click', function() {
+  endTurn();
 });
+
 
 function nextPlayer() {
   activePlayer === 0 ? activePlayer = 1: activePlayer = 0;
@@ -134,21 +145,6 @@ function init() {
   document.querySelector('.player-1-panel').classList.remove('active');
   document.querySelector('.player-0-panel').classList.add('active');
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 // Bottom
