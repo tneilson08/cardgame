@@ -87,16 +87,6 @@ body {
 .active .player-name { font-weight: 700; }
 .active .player-score { font-weight: 700; }
 
-.active .player-name::after {
-    content: "\2022";
-    font-size: 47px;
-    position: absolute;
-    color: white;
-    top: -7px;
-    right: 10px;
-
-}
-
 .player-current-box {
     background-color: #EB4D4D;
     color: #fff;
