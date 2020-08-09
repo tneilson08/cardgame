@@ -84,8 +84,8 @@ body {
 }
 
 .active { background-color: rgb(255,0,0,.1); }
-.active .player-name { font-weight: 300; }
-.active .player-score { font-weight: 300; }
+.active .player-name { font-weight: 700; }
+.active .player-score { font-weight: 700; }
 
 .active .player-name::after {
     content: "\2022";
