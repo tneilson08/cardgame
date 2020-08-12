@@ -55,8 +55,19 @@ function drawCard() {
       roundScore += card;
       document.querySelector('#current-' + activePlayer).textContent = roundScore;
     } else {
+
+      const buttons = document.querySelectorAll('button');
+      for(const button of buttons) {
+        button.disabled = true;
+      }
+
       // next player
-      nextPlayer();
+      setTimeout(() => {
+        nextPlayer();
+        for(const button of buttons) {
+          button.disabled = false;
+        }
+      }, 2000);
     }
 
     // if (card === 5) {
